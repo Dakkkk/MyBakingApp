@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyBakingApp</string>
+    <string name="recipes_list_is_empty">No recipes...</string>
 </resources>
