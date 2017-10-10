@@ -1,9 +1,11 @@
-package com.mobileallin.mybakingapp;
+package com.mobileallin.mybakingapp.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.mobileallin.mybakingapp.R;
+
+public class RecipesListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
