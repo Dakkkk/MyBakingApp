@@ -7,13 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.mobileallin.mybakingapp.R;
+import com.mobileallin.mybakingapp.presentation.presenter.RecipesListPresenter;
 
 /**
  * Created by Dawid on 2017-10-10.
  */
 
 public class RecipesListFragment extends MvpAppCompatFragment {
+
+    @InjectPresenter
+    RecipesListPresenter recipesListPesenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -24,6 +24,10 @@ android {
             force 'com.android.support:support-annotations:26.0.1'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
