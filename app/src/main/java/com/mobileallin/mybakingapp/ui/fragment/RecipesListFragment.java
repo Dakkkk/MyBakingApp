@@ -8,17 +8,30 @@ import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.mobileallin.mybakingapp.MyBakingApp;
 import com.mobileallin.mybakingapp.R;
+import com.mobileallin.mybakingapp.dagger.AppComponent;
+import com.mobileallin.mybakingapp.data.model.Recipe;
 import com.mobileallin.mybakingapp.presentation.presenter.RecipesListPresenter;
+import com.mobileallin.mybakingapp.presentation.view.RecipesListView;
+
+import java.util.List;
 
 /**
  * Created by Dawid on 2017-10-10.
  */
 
-public class RecipesListFragment extends MvpAppCompatFragment {
+public class RecipesListFragment extends MvpAppCompatFragment implements RecipesListView{
 
     @InjectPresenter
-    RecipesListPresenter recipesListPesenter;
+    RecipesListPresenter recipesListPresenter;
+
+    @ProvidePresenter
+    RecipesListPresenter providePresenter(){
+        AppComponent component = ((MyBakingApp)getActivity().getApplication()).getAppComponent();
+        return new RecipesListPresenter(component);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,5 +49,30 @@ public class RecipesListFragment extends MvpAppCompatFragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void showRecipes(List<Recipe> list) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void hideSwipeRefresh() {
+
+    }
+
+    @Override
+    public void showNetworkError() {
+
     }
 }

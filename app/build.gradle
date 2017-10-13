@@ -55,6 +55,9 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibVersion"
     compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
 
+    /*Moxy - boilerplate generator*/
+    /*Moxy is a library that helps to use MVP pattern when you do the Android Application.
+    Without problems of lifecycle and boilerplate code!*/
     compile "com.arello-mobile:moxy-app-compat:$rootProject.ext.moxyVersion"
     annotationProcessor "com.arello-mobile:moxy-compiler:$rootProject.ext.moxyVersion"
 
