@@ -44,6 +44,9 @@ public class AppModule {
     @Singleton
     @Provides
     public RecipesService provideRecipesService(RecipesDbHelper recipesDbHelper){
-        return new Repo(repoHelper, converter);
+/*
+        return new RecipesDb(recipesDbHelper);
+*/
+        return null;
     }
 }
