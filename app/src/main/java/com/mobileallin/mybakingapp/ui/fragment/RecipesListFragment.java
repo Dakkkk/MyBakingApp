@@ -29,7 +29,7 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
 
     @ProvidePresenter
     RecipesListPresenter providePresenter(){
-        AppComponent component = ((MyBakingApp)getActivity().getApplication()).getAppComponent();
+        AppComponent component = ((MyBakingApp) getActivity().getApplication()).getAppComponent();
         return new RecipesListPresenter(component);
     }
 

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.mobileallin.mybakingapp.dagger.AppComponent;
 import com.mobileallin.mybakingapp.dagger.AppModule;
+import com.mobileallin.mybakingapp.dagger.DaggerAppComponent;
 
 /**
  * Created by Dawid on 2017-10-11.

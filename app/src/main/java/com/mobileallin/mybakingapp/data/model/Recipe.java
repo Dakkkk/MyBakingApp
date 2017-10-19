@@ -1,54 +1,44 @@
 package com.mobileallin.mybakingapp.data.model;
 
+import android.os.Parcelable;
+
+import com.google.auto.value.AutoValue;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Dawid on 2017-10-10.
  */
+@AutoValue
+public abstract class Recipe implements Parcelable {
 
-public class Recipe {
-
-    public long id;
+    public abstract long id();
 
     @SerializedName("name")
-    public String name;
+    public abstract String name();
 
     @SerializedName("servings")
-    public int servings;
+    public abstract int servings();
 
     @SerializedName("image")
-    public String imageUrl;
+    public abstract String imageUrl();
 
-
-    public long getId() {
-        return id;
+    public static TypeAdapter<Recipe> typeAdapter(Gson gson){
+        return new AutoValue_Recipe.GsonTypeAdapter(gson);
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public static Builder builder() {
+        return new AutoValue_Recipe.Builder();
     }
 
-    public String getName() {
-        return name;
+    @AutoValue.Builder
+    public abstract static class Builder {
+        public abstract Builder setId(long id);
+        public abstract Builder setName(String value);
+        public abstract Builder setServings(int servings);
+        public abstract Builder setImageUrl(String imageUrl);
+        public abstract Recipe build();
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getServings() {
-        return servings;
-    }
-
-    public void setServings(int servings) {
-        this.servings = servings;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 }
