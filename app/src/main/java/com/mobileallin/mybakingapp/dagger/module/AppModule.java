@@ -38,6 +38,7 @@ public class AppModule {
 
     private final Context context;
     private static final String SHARED_PREFS_NAME = "app_preferences";
+
     public AppModule(Context context) {
         this.context = context;
     }
@@ -45,41 +46,41 @@ public class AppModule {
     @ApplicationContext
     @Singleton
     @Provides
-    public Context provideApplicationContext(){
+    public Context provideApplicationContext() {
         return context;
     }
 
     @IoScheduler
     @Singleton
     @Provides
-    public Scheduler provideIoScheduler(){
+    public Scheduler provideIoScheduler() {
         return Schedulers.io();
     }
 
     @UiScheduler
     @Singleton
     @Provides
-    public Scheduler provideUiScheduler(){
+    public Scheduler provideUiScheduler() {
         return AndroidSchedulers.mainThread();
     }
 
     @Singleton
     @Provides
     public RecipesInteractor provideRecipesInteractor(RecipesRepository recipesRepository, HttpClient client, TimeController timeController,
-                                                      @IoScheduler Scheduler ioScheduler, @UiScheduler Scheduler uiScheduler){
+                                                      @IoScheduler Scheduler ioScheduler, @UiScheduler Scheduler uiScheduler) {
         return new RecipesInteractor(recipesRepository, client, timeController, ioScheduler, uiScheduler);
     }
 
     @Singleton
     @Provides
-    public RecipesRepository provideRecipesRepository(RecipesDbHelper recipesDbHelper){
+    public RecipesRepository provideRecipesRepository(RecipesDbHelper recipesDbHelper) {
         RecipesConverter converter = new RecipesConverter();
         return new DatabaseRecipesRepository(recipesDbHelper, converter);
     }
 
     @Singleton
     @Provides
-    public HttpClient provideClient(){
+    public HttpClient provideClient() {
         GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(
                 new GsonBuilder().registerTypeAdapterFactory(AutoValueGsonFactory.create())
                         .create());
@@ -95,13 +96,13 @@ public class AppModule {
 
     @Singleton
     @Provides
-    public TimeController provideTimeController(SharedPreferences pref){
+    public TimeController provideTimeController(SharedPreferences pref) {
         return new TimeController(pref);
     }
 
     @Singleton
     @Provides
-    public SharedPreferences providePreferences(@ApplicationContext Context context){
+    public SharedPreferences providePreferences(@ApplicationContext Context context) {
         return context.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
     }
 

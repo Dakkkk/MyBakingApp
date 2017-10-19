@@ -2,6 +2,7 @@ package com.mobileallin.mybakingapp.dagger.component;
 
 import com.mobileallin.mybakingapp.dagger.module.AppModule;
 import com.mobileallin.mybakingapp.presentation.presenter.RecipesListPresenter;
+import com.mobileallin.mybakingapp.repositories.RecipesRepository;
 import com.mobileallin.mybakingapp.ui.activity.RecipesListActivity;
 import com.mobileallin.mybakingapp.ui.fragment.RecipesListFragment;
 
@@ -14,13 +15,13 @@ import dagger.Component;
  */
 @Singleton
 @Component(modules = {AppModule.class})
-public interface AppComponent {
+public interface MyBakingAppComponent {
+
 
     void inject(RecipesListActivity obj);
-
     void inject(RecipesListFragment obj);
-
     void inject(RecipesListPresenter obj);
+    RecipesRepository RecipesRepository();
 
 /*
     RecipesService RecipesService();

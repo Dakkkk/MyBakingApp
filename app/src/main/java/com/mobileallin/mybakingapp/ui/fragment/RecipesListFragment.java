@@ -11,7 +11,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.mobileallin.mybakingapp.MyBakingApp;
 import com.mobileallin.mybakingapp.R;
-import com.mobileallin.mybakingapp.dagger.component.AppComponent;
+import com.mobileallin.mybakingapp.dagger.component.MyBakingAppComponent;
 import com.mobileallin.mybakingapp.data.model.Recipe;
 import com.mobileallin.mybakingapp.presentation.presenter.RecipesListPresenter;
 import com.mobileallin.mybakingapp.presentation.view.RecipesListView;
@@ -29,7 +29,7 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
 
     @ProvidePresenter
     RecipesListPresenter providePresenter(){
-        AppComponent component = ((MyBakingApp) getActivity().getApplication()).getAppComponent();
+        MyBakingAppComponent component = ((MyBakingApp)getActivity().getApplication()).getMyBakingAppComponent();
         return new RecipesListPresenter(component);
     }
 

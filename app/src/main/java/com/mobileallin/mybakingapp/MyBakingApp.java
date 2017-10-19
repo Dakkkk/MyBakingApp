@@ -2,9 +2,9 @@ package com.mobileallin.mybakingapp;
 
 import android.app.Application;
 
-import com.mobileallin.mybakingapp.dagger.component.AppComponent;
+import com.mobileallin.mybakingapp.dagger.component.MyBakingAppComponent;
 import com.mobileallin.mybakingapp.dagger.module.AppModule;
-import com.mobileallin.mybakingapp.dagger.component.DaggerAppComponent;
+import com.mobileallin.mybakingapp.dagger.component.DaggerMyBakingAppComponent;
 
 /**
  * Created by Dawid on 2017-10-11.
@@ -12,21 +12,21 @@ import com.mobileallin.mybakingapp.dagger.component.DaggerAppComponent;
 
 public class MyBakingApp extends Application {
 
-    private AppComponent appComponent;
+    private MyBakingAppComponent myBakingAppComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        appComponent = createAppComponent();
+        myBakingAppComponent = createAppComponent();
     }
 
-    protected AppComponent createAppComponent() {
-        return DaggerAppComponent.builder()
+    protected MyBakingAppComponent createAppComponent() {
+        return DaggerMyBakingAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
     }
 
-    public AppComponent getAppComponent() {
-        return appComponent;
+    public MyBakingAppComponent getMyBakingAppComponent() {
+        return myBakingAppComponent;
     }
 }
