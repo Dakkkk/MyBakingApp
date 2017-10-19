@@ -1,10 +1,13 @@
-package com.mobileallin.mybakingapp.dagger;
+package com.mobileallin.mybakingapp.dagger.module;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.GsonBuilder;
+import com.mobileallin.mybakingapp.dagger.ApplicationContext;
+import com.mobileallin.mybakingapp.dagger.IoScheduler;
+import com.mobileallin.mybakingapp.dagger.UiScheduler;
 import com.mobileallin.mybakingapp.data.RecipesConverter;
 import com.mobileallin.mybakingapp.data.database.RecipesDbHelper;
 import com.mobileallin.mybakingapp.helper.time.TimeController;

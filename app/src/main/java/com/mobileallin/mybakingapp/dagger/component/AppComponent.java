@@ -1,5 +1,6 @@
-package com.mobileallin.mybakingapp.dagger;
+package com.mobileallin.mybakingapp.dagger.component;
 
+import com.mobileallin.mybakingapp.dagger.module.AppModule;
 import com.mobileallin.mybakingapp.presentation.presenter.RecipesListPresenter;
 import com.mobileallin.mybakingapp.ui.activity.RecipesListActivity;
 import com.mobileallin.mybakingapp.ui.fragment.RecipesListFragment;

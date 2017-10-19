@@ -2,9 +2,9 @@ package com.mobileallin.mybakingapp;
 
 import android.app.Application;
 
-import com.mobileallin.mybakingapp.dagger.AppComponent;
-import com.mobileallin.mybakingapp.dagger.AppModule;
-import com.mobileallin.mybakingapp.dagger.DaggerAppComponent;
+import com.mobileallin.mybakingapp.dagger.component.AppComponent;
+import com.mobileallin.mybakingapp.dagger.module.AppModule;
+import com.mobileallin.mybakingapp.dagger.component.DaggerAppComponent;
 
 /**
  * Created by Dawid on 2017-10-11.

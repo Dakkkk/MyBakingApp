@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.mobileallin.mybakingapp.dagger.AppComponent;
+import com.mobileallin.mybakingapp.dagger.component.AppComponent;
 import com.mobileallin.mybakingapp.data.model.Recipe;
 import com.mobileallin.mybakingapp.interactor.RecipesInteractor;
 import com.mobileallin.mybakingapp.presentation.view.RecipesListView;
