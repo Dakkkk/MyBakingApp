@@ -1,5 +1,6 @@
 package com.mobileallin.mybakingapp.data;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.mobileallin.mybakingapp.data.model.Recipe;
@@ -13,6 +14,14 @@ import java.util.List;
  */
 
 public class RecipesConverter {
+
+    public ContentValues toContentValues(Recipe recipe){
+        ContentValues cv = new ContentValues();
+        cv.put(RecipeEntry.COL_NAME, recipe.name());
+        cv.put(RecipeEntry.COL_IMAGE_URL, recipe.imageUrl());
+        cv.put(RecipeEntry.COL_SERVINGS, recipe.servings());
+        return cv;
+    }
 
     public List<Recipe> toRecipesNameList(Cursor cursor) {
         List<Recipe> list = new ArrayList<>();

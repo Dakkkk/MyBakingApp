@@ -1,5 +1,6 @@
 package com.mobileallin.mybakingapp.repositories.impl;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -37,7 +38,26 @@ public class DatabaseRecipesRepository implements RecipesRepository {
 
     @Override
     public Observable<Long> putRecipes(List<Recipe> recipeList) {
-        return null;
+        return Observable.fromCallable(() -> {
+            long result = 0L;
+            SQLiteDatabase db = recipesDbHelper.getWritableDatabase();
+            db.delete(RecipesContract.RecipeEntry.TABLE_NAME, null, null);
+            db.delete(RecipesContract.StepEntry.TABLE_NAME, null, null);
+            db.delete(RecipesContract.IngredientEntry.TABLE_NAME, null, null);
+            try {
+                db.beginTransaction();
+                for (Recipe recipe : recipeList) {
+                    ContentValues cv = converter.toContentValues(recipe);
+                    long recipeId = db.insert(RecipesContract.RecipeEntry.TABLE_NAME, null, cv);
+                }
+                db.setTransactionSuccessful();
+            } catch (Exception e) {
+                result = -1L;
+            } finally {
+                db.endTransaction();
+            }
+            return result;
+        });
     }
 
     @Override

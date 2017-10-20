@@ -73,7 +73,7 @@ public class AppModule {
 
     @Singleton
     @Provides
-    public RecipesRepository provideRecipesRepository(RecipesDbHelper recipesDbHelper) {
+    public RecipesRepository provideDatabaseRecipesRepository(RecipesDbHelper recipesDbHelper) {
         RecipesConverter converter = new RecipesConverter();
         return new DatabaseRecipesRepository(recipesDbHelper, converter);
     }

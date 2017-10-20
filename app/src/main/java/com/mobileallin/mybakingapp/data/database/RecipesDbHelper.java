@@ -10,15 +10,16 @@ import com.mobileallin.mybakingapp.data.database.RecipesContract.RecipeEntry;
 import com.mobileallin.mybakingapp.data.database.RecipesContract.StepEntry;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * Created by Dawid on 2017-10-13.
  */
-
+@Singleton
 public class RecipesDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "recipes.db";
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
 
     @Inject
     public RecipesDbHelper(@ApplicationContext Context context) {

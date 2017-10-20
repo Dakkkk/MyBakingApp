@@ -45,6 +45,7 @@ public class RecipesListPresenter extends MvpPresenter<RecipesListView> {
 
     }
 
+
     @Override
     public void attachView(RecipesListView view) {
         super.attachView(view);
@@ -54,5 +55,8 @@ public class RecipesListPresenter extends MvpPresenter<RecipesListView> {
                     getViewState().showRecipes(result);
                     Log.d("recipesList", recipesList.toString());
                 });
+    }
+
+    public void showDetails(int position) {
     }
 }
