@@ -88,8 +88,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         public void bind(Recipe recipe){
             GlideApp.with(context)
                     .load(recipe.imageUrl())
-                    .placeholder(R.drawable.exo_controls_play)
-                    .error(R.drawable.exo_controls_next)
+                    .placeholder(R.drawable.ic_cake_black_32dp)
+                    .error(R.drawable.ic_error_black)
                     .into(recipeImageView);
 
             recipeNameView.setText(recipe.name());
