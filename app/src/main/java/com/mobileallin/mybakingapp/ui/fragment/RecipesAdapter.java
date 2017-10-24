@@ -77,7 +77,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         ImageView recipeImageView;
         @BindView(R.id.recipe_name)
         TextView recipeNameView;
-        @BindView(R.id.recipe_servings) TextView servingsView;
+        @BindView(R.id.recipe_servings)
+        TextView servingsView;
 
         public ViewHolder(View view){
             super(view);
@@ -89,7 +90,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
             GlideApp.with(context)
                     .load(recipe.imageUrl())
                     .placeholder(R.drawable.ic_cake_black_32dp)
-                    .error(R.drawable.ic_error_black)
+                    .error(R.drawable.ic_cake_black_32dp)
                     .into(recipeImageView);
 
             recipeNameView.setText(recipe.name());

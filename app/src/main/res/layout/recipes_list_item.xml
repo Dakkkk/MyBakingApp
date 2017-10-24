@@ -24,8 +24,7 @@
             android:scaleType="center"
             android:id="@+id/recipe_image"
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/colorAccent"/>
+            android:layout_height="100dp" />
 
         <TextView
             tools:text="Nutella Pie"

@@ -93,7 +93,7 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
 
     @Override
     public void hideLoading() {
-        enableProgressBar(true);
+        enableProgressBar(false);
     }
 
     @Override
