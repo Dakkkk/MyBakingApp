@@ -53,7 +53,7 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
     @ProvidePresenter
     RecipesListPresenter providePresenter() {
         MyBakingAppComponent component = ((MyBakingApp) getActivity().getApplication()).getMyBakingAppComponent();
-        return new RecipesListPresenter(component);
+        return new RecipesListPresenter(component, this);
     }
 
     @Override
@@ -87,6 +87,11 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
     }
 
     @Override
+    public void enterDatailActivity(int itemPosition) {
+        Toast.makeText(getContext(), "Item nr" + itemPosition, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void showLoading() {
         enableProgressBar(true);
     }
@@ -107,12 +112,14 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
 
     }
 
-    /** util methods */
+    /**
+     * util methods
+     */
 
-    private void enableProgressBar(boolean enable){
-        int visibility = enable? View.VISIBLE:View.GONE;
+    private void enableProgressBar(boolean enable) {
+        int visibility = enable ? View.VISIBLE : View.GONE;
         progressBar.setVisibility(visibility);
        /* shield.setVisibility(visibility);*/
-       shield.setVisibility(View.INVISIBLE);
+        shield.setVisibility(View.INVISIBLE);
     }
 }

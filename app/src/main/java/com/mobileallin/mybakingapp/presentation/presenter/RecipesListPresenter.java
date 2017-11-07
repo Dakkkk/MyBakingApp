@@ -23,13 +23,14 @@ public class RecipesListPresenter extends MvpPresenter<RecipesListView> {
 
     private static final String TAG = "RecipesListPresenter";
     private List<Recipe> recipesList;
+    private RecipesListView view;
 
     @Inject
     RecipesInteractor recipesInteractor;
 
-    public RecipesListPresenter(MyBakingAppComponent component) {
+    public RecipesListPresenter(MyBakingAppComponent component, RecipesListView view) {
         component.inject(this);
-
+        this.view = view;
     }
 
     @Override
@@ -59,6 +60,6 @@ public class RecipesListPresenter extends MvpPresenter<RecipesListView> {
     }
 
     public void showDetails(int position) {
-
+       view.enterDatailActivity(position);
     }
 }

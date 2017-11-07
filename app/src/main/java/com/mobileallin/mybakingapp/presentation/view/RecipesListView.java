@@ -16,6 +16,8 @@ public interface RecipesListView extends MvpView {
 
     void showRecipes(List<Recipe> list);
 
+    void enterDatailActivity(int itemPosition);
+
     void showLoading();
 
     void hideLoading();
