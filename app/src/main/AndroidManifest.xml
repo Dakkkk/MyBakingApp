@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.activity.RecipeDetailActivity">
+        </activity>
         <activity android:name=".ui.activity.BaseActivity" />
     </application>
 

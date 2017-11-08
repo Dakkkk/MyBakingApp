@@ -1,6 +1,9 @@
 package com.mobileallin.mybakingapp.ui.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -22,6 +25,7 @@ import com.mobileallin.mybakingapp.dagger.component.MyBakingAppComponent;
 import com.mobileallin.mybakingapp.data.model.Recipe;
 import com.mobileallin.mybakingapp.presentation.presenter.RecipesListPresenter;
 import com.mobileallin.mybakingapp.presentation.view.RecipesListView;
+import com.mobileallin.mybakingapp.ui.activity.RecipeDetailActivity;
 
 import java.util.List;
 
@@ -50,6 +54,9 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshView;
 
+    private Parcelable recipesListState;
+    private static final String RECIPES_LIST_STATE = "recipes_list_state";
+
     @ProvidePresenter
     RecipesListPresenter providePresenter() {
         MyBakingAppComponent component = ((MyBakingApp) getActivity().getApplication()).getMyBakingAppComponent();
@@ -59,6 +66,9 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null){
+            recipesListState = savedInstanceState.getParcelable(RECIPES_LIST_STATE);
+        }
     }
 
     @Nullable
@@ -79,16 +89,26 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putParcelable(RECIPES_LIST_STATE,
+                recipesRecyclerView.getLayoutManager().onSaveInstanceState());
     }
 
     @Override
     public void showRecipes(List<Recipe> list) {
         recipeAdapter.setItems(list);
+        if (recipesListState != null){
+            recipesRecyclerView.getLayoutManager().onRestoreInstanceState(recipesListState);
+        }
     }
 
     @Override
     public void enterDatailActivity(int itemPosition) {
-        Toast.makeText(getContext(), "Item nr" + itemPosition, Toast.LENGTH_SHORT).show();
+        Activity activity = getActivity();
+        if (isAdded() && activity != null) {
+        Toast.makeText(getActivity(), "Item nr" + itemPosition, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(activity, RecipeDetailActivity.class);
+        startActivity(intent);
+        }
     }
 
     @Override

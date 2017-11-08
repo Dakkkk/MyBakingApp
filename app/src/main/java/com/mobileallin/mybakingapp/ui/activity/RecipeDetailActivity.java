@@ -15,4 +15,13 @@ public class RecipeDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
     }
+
+    @Override
+    public void onBackPressed() {
+        int fragments = getFragmentManager().getBackStackEntryCount();
+        if (fragments == 1) {
+            // make layout invisible since last fragment will be removed
+        }
+        super.onBackPressed();
+    }
 }
