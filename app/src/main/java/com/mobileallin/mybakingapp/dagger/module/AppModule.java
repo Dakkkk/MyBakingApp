@@ -12,6 +12,7 @@ import com.mobileallin.mybakingapp.data.RecipesConverter;
 import com.mobileallin.mybakingapp.data.database.RecipesDbHelper;
 import com.mobileallin.mybakingapp.helper.time.TimeController;
 import com.mobileallin.mybakingapp.interactor.RecipesInteractor;
+import com.mobileallin.mybakingapp.navigation.Router;
 import com.mobileallin.mybakingapp.network.AutoValueGsonFactory;
 import com.mobileallin.mybakingapp.network.HttpClient;
 import com.mobileallin.mybakingapp.repositories.RecipesRepository;
@@ -105,6 +106,13 @@ public class AppModule {
     public SharedPreferences providePreferences(@ApplicationContext Context context) {
         return context.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
     }
+
+    @Singleton
+    @Provides
+    Router provideRouter(){
+        return new Router();
+    }
+
 
 
 }

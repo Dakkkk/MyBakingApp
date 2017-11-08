@@ -36,7 +36,7 @@ public class RecipesInteractor {
         this.uiScheduler = uiScheduler;
     }
 
-    public Observable<Long> updateRecipes(){
+    public Observable<Long> updateRecipes() {
         return timeController.isItTimeToUpdate()
                 .filter(result -> result == true)
                 .concatMap(result -> client.getRecipes())

@@ -1,7 +1,5 @@
 package com.mobileallin.mybakingapp.ui.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -25,7 +23,6 @@ import com.mobileallin.mybakingapp.dagger.component.MyBakingAppComponent;
 import com.mobileallin.mybakingapp.data.model.Recipe;
 import com.mobileallin.mybakingapp.presentation.presenter.RecipesListPresenter;
 import com.mobileallin.mybakingapp.presentation.view.RecipesListView;
-import com.mobileallin.mybakingapp.ui.activity.RecipeDetailActivity;
 
 import java.util.List;
 
@@ -77,7 +74,7 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
         View view = inflater.inflate(R.layout.fragment_recipes_list, container, false);
         ButterKnife.bind(this, view);
         recipeAdapter = new RecipesAdapter(getContext(), emptyListView);
-        recipeAdapter.setItemClickListener(position -> recipesListPresenter.showDetails(position));
+        recipeAdapter.setItemClickListener(position -> recipesListPresenter.enterDetailActivity(position));
         int columns = getResources().getInteger(R.integer.recipes_list_columns);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), columns);
         recipesRecyclerView.setLayoutManager(layoutManager);
@@ -103,12 +100,12 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
 
     @Override
     public void enterDatailActivity(int itemPosition) {
-        Activity activity = getActivity();
+      /*  Activity activity = getActivity();
         if (isAdded() && activity != null) {
         Toast.makeText(getActivity(), "Item nr" + itemPosition, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(activity, RecipeDetailActivity.class);
         startActivity(intent);
-        }
+        }*/
     }
 
     @Override
@@ -131,10 +128,6 @@ public class RecipesListFragment extends MvpAppCompatFragment implements Recipes
         Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
 
     }
-
-    /**
-     * util methods
-     */
 
     private void enableProgressBar(boolean enable) {
         int visibility = enable ? View.VISIBLE : View.GONE;
