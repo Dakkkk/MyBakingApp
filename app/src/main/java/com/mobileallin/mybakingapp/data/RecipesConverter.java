@@ -32,10 +32,12 @@ public class RecipesConverter {
                 String name = getString(cursor, RecipeEntry.COL_NAME);
                 String imageUrl = getString(cursor, RecipeEntry.COL_IMAGE_URL);
                 int servings = getInt(cursor, RecipeEntry.COL_SERVINGS);
+
                 Recipe recipe = Recipe.builder()
                         .setId(id)
                         .setName(name)
                         .setServings(servings)
+                        .setDetailActions(new ArrayList<>())
                         .setImageUrl(imageUrl)
                         .build();
                 list.add(recipe);

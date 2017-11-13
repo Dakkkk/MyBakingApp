@@ -3,6 +3,7 @@ package com.mobileallin.mybakingapp.dagger.component;
 import com.mobileallin.mybakingapp.dagger.module.AppModule;
 import com.mobileallin.mybakingapp.presentation.presenter.RecipesListPresenter;
 import com.mobileallin.mybakingapp.repositories.RecipesRepository;
+import com.mobileallin.mybakingapp.ui.activity.RecipeDetailActivity;
 import com.mobileallin.mybakingapp.ui.activity.RecipesListActivity;
 import com.mobileallin.mybakingapp.ui.fragment.RecipesListFragment;
 
@@ -19,13 +20,14 @@ public interface MyBakingAppComponent {
 
 
     void inject(RecipesListActivity obj);
-    void inject(RecipesListFragment obj);
-    void inject(RecipesListPresenter obj);
-    RecipesRepository RecipesRepository();
 
-/*
-    RecipesService RecipesService();
-*/
+    void inject(RecipeDetailActivity obj);
+
+    void inject(RecipesListFragment obj);
+
+    void inject(RecipesListPresenter obj);
+
+    RecipesRepository RecipesRepository();
 }
 
 

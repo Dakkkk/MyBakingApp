@@ -3,4 +3,5 @@
     <string name="recipes_list_is_empty">No recipes...</string>
     <string name="servings">Servings:</string>
     <string name="connection_error">Connection error!</string>
+    <string name="recipe_ingredients">Ingredients list</string>
 </resources>

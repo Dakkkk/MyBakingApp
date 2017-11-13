@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by Dawid on 2017-10-10.
  */
@@ -24,6 +26,9 @@ public abstract class Recipe implements Parcelable {
     @SerializedName("image")
     public abstract String imageUrl();
 
+    @SerializedName("steps")
+    public abstract List<DetailAction> detailActions();
+
     public static TypeAdapter<Recipe> typeAdapter(Gson gson){
         return new AutoValue_Recipe.GsonTypeAdapter(gson);
     }
@@ -37,6 +42,7 @@ public abstract class Recipe implements Parcelable {
         public abstract Builder setId(long id);
         public abstract Builder setName(String value);
         public abstract Builder setServings(int servings);
+        public abstract Builder setDetailActions(List<DetailAction> list);
         public abstract Builder setImageUrl(String imageUrl);
         public abstract Recipe build();
     }
