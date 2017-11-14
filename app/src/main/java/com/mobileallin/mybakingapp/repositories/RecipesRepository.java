@@ -1,5 +1,6 @@
 package com.mobileallin.mybakingapp.repositories;
 
+import com.mobileallin.mybakingapp.data.model.DetailAction;
 import com.mobileallin.mybakingapp.data.model.Recipe;
 
 import java.util.List;
@@ -17,4 +18,7 @@ public interface RecipesRepository {
     Observable<List<Recipe>> getRecipeNames();
 
     Observable<Recipe> getRecipe(long id);
+
+    Observable<DetailAction> getDetailAction(long id, int step);
+
 }

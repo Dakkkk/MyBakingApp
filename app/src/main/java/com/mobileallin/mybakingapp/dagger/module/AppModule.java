@@ -11,6 +11,7 @@ import com.mobileallin.mybakingapp.dagger.UiScheduler;
 import com.mobileallin.mybakingapp.data.RecipesConverter;
 import com.mobileallin.mybakingapp.data.database.RecipesDbHelper;
 import com.mobileallin.mybakingapp.helper.time.TimeController;
+import com.mobileallin.mybakingapp.interactor.RecipeDetailInteractor;
 import com.mobileallin.mybakingapp.interactor.RecipesInteractor;
 import com.mobileallin.mybakingapp.navigation.Router;
 import com.mobileallin.mybakingapp.network.AutoValueGsonFactory;
@@ -70,6 +71,13 @@ public class AppModule {
     public RecipesInteractor provideRecipesInteractor(RecipesRepository recipesRepository, HttpClient client, TimeController timeController,
                                                       @IoScheduler Scheduler ioScheduler, @UiScheduler Scheduler uiScheduler) {
         return new RecipesInteractor(recipesRepository, client, timeController, ioScheduler, uiScheduler);
+    }
+
+    @Singleton
+    @Provides
+    public RecipeDetailInteractor provideRecipeDetailInteractor(RecipesRepository repo,
+                                                                 @IoScheduler Scheduler ioScheduler, @UiScheduler Scheduler uiScheduler){
+        return new RecipeDetailInteractor(repo, ioScheduler, uiScheduler);
     }
 
     @Singleton

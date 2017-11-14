@@ -3,6 +3,8 @@ package com.mobileallin.mybakingapp.data.model;
 import android.os.Parcelable;
 
 import com.google.auto.value.AutoValue;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -27,13 +29,13 @@ public abstract class DetailAction implements Parcelable {
     @SerializedName("thumbnailURL")
     public abstract String thumbnailURL();
 
-/*    public static TypeAdapter<DetailAction> typeAdapter(Gson gson) {
+    public static TypeAdapter<DetailAction> typeAdapter(Gson gson) {
         return new AutoValue_DetailAction.GsonTypeAdapter(gson);
     }
 
     public static Builder builder() {
         return new AutoValue_DetailAction.Builder();
-    }*/
+    }
 
     @AutoValue.Builder
     public abstract static class Builder {

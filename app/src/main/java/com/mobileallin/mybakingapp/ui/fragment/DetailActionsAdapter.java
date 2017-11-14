@@ -23,8 +23,8 @@ import butterknife.ButterKnife;
 
 public class DetailActionsAdapter extends RecyclerView.Adapter<DetailActionsAdapter.ViewHolder> {
 
-    private static final int INGREDIENT_VIEW_TYPE = 0;
-    private static final int DETAIL_ACTION_VIEW_TYPE = 1;
+    private static final int INGREDIENT_VIEW_TYPE = 1;
+    private static final int DETAIL_ACTION_VIEW_TYPE = 0;
 
     public DetailActionsAdapter () {
         this(new ArrayList<>());
@@ -50,6 +50,10 @@ public class DetailActionsAdapter extends RecyclerView.Adapter<DetailActionsAdap
                 holder.bindIngredientsList();
                 return;
             case DETAIL_ACTION_VIEW_TYPE:
+                if (detailActionsList.size() == 0) {
+                    Log.d(getClass().getSimpleName(), "onBindViewHolder called actionsLIst size 0!");
+                    return;
+                }
                 holder.bindDetailAction(detailActionsList.get(position - 1));
                 return;
             default:
@@ -69,7 +73,7 @@ public class DetailActionsAdapter extends RecyclerView.Adapter<DetailActionsAdap
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         @BindView(R.id.action_name)
-        TextView actionNameView;
+        TextView actionNameText;
 
         public ViewHolder(View view){
             super(view);
@@ -78,11 +82,11 @@ public class DetailActionsAdapter extends RecyclerView.Adapter<DetailActionsAdap
         }
 
         public void bindIngredientsList(){
-            actionNameView.setText(R.string.recipe_ingredients);
+            actionNameText.setText(R.string.recipe_ingredients);
         }
 
         public void bindDetailAction(DetailAction detailAction){
-            actionNameView.setText(detailAction.shortDescription());
+            actionNameText.setText(detailAction.shortDescription());
         }
 
         @Override
